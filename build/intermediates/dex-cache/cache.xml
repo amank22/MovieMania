@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_2dee9e4401361f75d5e9597d47a06f4952120280\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-24.2.1_cec1dde10bd36715e6d6ec6700b494428a5fadea\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.1_fad82e31f0eca532c899765a8549d12312099598\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="1274eb7e046d36838e2ec8971093a4970ae052fd">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_80ebd7a13d78612a1f5d05052e0aad2f1e9b8283\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_1397ee1fcb212229fe7f1b1050eb523035f6cb48\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.1.0\aa557d71ead91cbf26e0c316a0f593d168303309\converter-gson-2.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="aa557d71ead91cbf26e0c316a0f593d168303309">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\converter-gson-2.1.0_815681c50051ecb374e1ad2b9c4b4438bb0544ff\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.3.1\19047bdb6a4fc00a44124f64ca98e88fc204e7e3\okhttp-3.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="19047bdb6a4fc00a44124f64ca98e88fc204e7e3">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\okhttp-3.3.1_0688f27c4000ee0437f33db5837bf15e7f9ab668\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-24.2.1_b20298440f5eb2c32b8c1a43a6611e330d3b71b4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_bd8e78fd9d502503c9266ae8b222ae2603b23f13\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.1.0\2de7cd8b95b7021b1d597f049bcb422055119f2c\retrofit-2.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="2de7cd8b95b7021b1d597f049bcb422055119f2c">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\retrofit-2.1.0_e470e20f2007aa4d899822013f71c794f8d9898c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.8.0\5ea7af56cc7c567ed9856d99efb30740e9b17ff\okio-1.8.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="05ea7af56cc7c567ed9856d99efb30740e9b17ff">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\okio-1.8.0_2011cfe7f15fa43e4d559d2d81a15a7b56cd84de\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\exploded-aar\io.reactivex\rxandroid\1.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="5a2386ad9bfff580b206a7fe305cdccd00798159">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\io.reactivex-rxandroid-1.2.1_0b2d70480268653ae03a3d4c25dbda1d1a320896\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\.gradle\caches\modules-2\files-2.1\io.reactivex\rxjava\1.1.6\2586312cd2b8a511e4c6236736f5a039fc0f2273\rxjava-1.1.6.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="2586312cd2b8a511e4c6236736f5a039fc0f2273">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\rxjava-1.1.6_827c0738bf51a660c94d9398ae440dcdde66c4cf\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_46a9ce06e5b1769af829c5f9fdfce576a9089e04\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\logging-interceptor\3.3.1\99ce730034c6f5aaed710d1e0e9df95e8714ed5f\logging-interceptor-3.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="99ce730034c6f5aaed710d1e0e9df95e8714ed5f">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\logging-interceptor-3.3.1_2e82ffe76a33f302f6dbe6465d5a1db666dfbc63\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-24.2.1_f01e48f44de7b528c9e4fcce728fe1a78dff49eb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.2.1_01a901fb8f6c03f2e7f17fa7467e21465e912ee8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-24.2.1_73540f63c53045c8fff027b10b47afb951e2928e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="3c839ccb91507c5e8caa0cbd05788fd70a991293">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_a550655cd6cf23c9331db15acde9142a996c3516\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_b22b547902b127443d4d2f94aaa2728853ad5a54\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\adapter-rxjava\2.1.0\693eddc23e87ab13f9cf5001707ce8e7e1d1ff01\adapter-rxjava-2.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="693eddc23e87ab13f9cf5001707ce8e7e1d1ff01">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\adapter-rxjava-2.1.0_4942538981d357b534a185593150183cb590a5f3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-24.2.1_9149ff1de1d241e071aecc3a8507167618c84728\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-24.2.1_92d50c4207a484895feff34926f86ef39e69acfb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\exploded-aar\com.android.support\palette-v7\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="3b7105277df9a8013468215c451ddefac2499d3a">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-palette-v7-24.2.1_c0e0ec832ea35ad4e1f740e4848417d8fa52354e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.2.1_3e4828cae19ed6d460ddf8d9f2c605afee5503d9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\glide-3.7.0_9189f4fbce358f3eaa515d01f6d3a6fab8cb44e8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_2dcc355847c55402c23901a97fc7abb5de5b47b9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.7_2a90cf0b2099309301797518b5ceb2c29386c0f4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-24.2.1_54ecc6873211a026ce264f12dfe5a213fbf96710\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\exploded-aar\com.android.support\design\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-24.2.1_decae917e86826db8d02a7fd47231e96f5e0481f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.2.1_d3ed446c1f3cfb2f4e867f2cd8c1e3f3f6e72ce0\classes.dex" />
+    </item>
+
+</items>

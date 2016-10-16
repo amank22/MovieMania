@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Movie Mania</string>
+    <string name="desc_movie_thumbnail">Movie Thumbnail</string>
+    <string name="title_activity_movie_details">Movie Details</string>
+    <string name="desc_movie_general_icon">Movie General Icon</string>
+    <string name="loading_movies">Loading Movies…</string>
+    <string name="dialog_title_choose_movies">Choose your movies</string>
+    <string name="movie_cat_popular">Popular Movies</string>
+    <string name="movie_cat_top">Top Movies</string>
+    <string name="hero_movie_image">Hero Movie Image</string>
+    <string name="error_no_internet">Please check that you are connected to internet.</string>
+    <string name="error_unknown">Some unknown error stuck me. Ghosh! i can\'t think of anything</string>
+</resources>

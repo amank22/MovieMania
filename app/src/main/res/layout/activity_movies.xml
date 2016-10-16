@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_movies"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.aman.moviemania.MovieDetailsActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_scrollFlags="scroll|snap"
+            app:layout_scrollInterpolator="@android:interpolator/accelerate_decelerate"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <TextView
+        android:id="@+id/movie_error_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:text="@string/loading_movies"
+        android:textSize="@dimen/error_text_size"
+        android:textStyle="bold" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView_movies"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin">
+
+        <ProgressBar
+            android:id="@+id/movie_progress"
+            android:layout_width="@dimen/progress_around_fab_size"
+            android:layout_height="@dimen/progress_around_fab_size"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:indeterminateBehavior="repeat" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="@dimen/fab_with_progress_size"
+            android:layout_height="@dimen/fab_with_progress_size"
+            android:layout_gravity="center"
+            app:backgroundTint="@color/white"
+            app:rippleColor="@color/primary"
+            app:srcCompat="@drawable/ic_list_menu" />
+    </FrameLayout>
+</android.support.design.widget.CoordinatorLayout>

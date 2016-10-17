@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/reviews_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="@string/app_name"
+        android:textColor="@color/colorPrimary"
+        android:textIsSelectable="false"
+        android:textSize="@dimen/text_date_size" />
+
+    <TextView
+        android:id="@+id/reviews_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="5dp"
+        android:textColor="@color/white"
+        android:textIsSelectable="false"
+        android:textSize="@dimen/movie_overview_text_size" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"
+        android:layout_marginBottom="@dimen/common_icon_spacing"
+        android:layout_marginLeft="@dimen/padding_divider_line"
+        android:layout_marginRight="@dimen/padding_divider_line"
+        android:layout_marginTop="@dimen/common_icon_spacing"
+        android:background="@color/cardview_light_background" />
+
+</LinearLayout>

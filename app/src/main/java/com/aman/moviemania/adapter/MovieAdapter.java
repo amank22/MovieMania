@@ -60,7 +60,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
         ViewHolder(View v) {
             super(v);
-            mThumbnail = (ImageView) v.findViewById(R.id.imageView_movie_thumb);
+            mThumbnail = (ImageView) v;
         }
     }
 

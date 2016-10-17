@@ -34,7 +34,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="1274eb7e046d36838e2ec8971093a4970ae052fd">
+        sha1="0cedf5c3cf3062dc3014661a99089ab6384dd3c0">
         <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_80ebd7a13d78612a1f5d05052e0aad2f1e9b8283\classes.dex" />
     </item>
     <item
@@ -169,7 +169,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="3c839ccb91507c5e8caa0cbd05788fd70a991293">
+        sha1="331006ce933c68a28738232ce6c55838c1a7aa06">
         <dex dex="C:\Users\Aman Kapoor\Desktop\MovieMania\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_a550655cd6cf23c9331db15acde9142a996c3516\classes.dex" />
     </item>
     <item

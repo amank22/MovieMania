@@ -55,6 +55,7 @@
             android:layout_centerHorizontal="true"
             android:paddingTop="4dp"
             android:textColor="@color/primary_text"
+            android:textIsSelectable="false"
             android:textSize="@dimen/text_title_land_size"
             android:textStyle="bold" />
 
@@ -65,7 +66,20 @@
             android:layout_below="@id/movie_detail_title"
             android:layout_centerHorizontal="true"
             android:textColor="@color/secondary_text"
+            android:textIsSelectable="false"
             android:textSize="@dimen/text_date_land_size" />
+
+        <TextView
+            android:id="@+id/movie_detail_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/movie_detail_date"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textIsSelectable="false"
+            android:textSize="@dimen/movie_rating_text_size"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 

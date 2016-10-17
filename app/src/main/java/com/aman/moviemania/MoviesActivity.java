@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -21,6 +19,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aman.moviemania.adapter.MovieAdapter;
 import com.aman.moviemania.helper.Constants;
@@ -103,6 +102,10 @@ public class MoviesActivity extends AppCompatActivity {
             builder.setTitle(R.string.dialog_title_choose_movies);
             String[] items = {getString(R.string.movie_cat_popular), getString(R.string.movie_cat_top)};
             builder.setItems(items, (dialog, pos) -> {
+                if (!Utils.checkNetworkConnected(MoviesActivity.this)) {
+                    Toast.makeText(MoviesActivity.this, R.string.error_no_internet, Toast.LENGTH_LONG).show();
+                    return;
+                }
                 if (pos == 0 && currentType != pos) {
                     MovieIntentService.startActionPopular(this);
                     errorText.setText(R.string.loading_movies);
@@ -216,7 +219,6 @@ public class MoviesActivity extends AppCompatActivity {
         } else {
             errorText.setText(R.string.error_unknown);
         }
-
         errorText.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.INVISIBLE);
     }

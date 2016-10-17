@@ -34,6 +34,7 @@
             android:layout_toRightOf="@id/image_film_icon"
             android:paddingTop="4dp"
             android:textColor="@color/primary_text"
+            android:textIsSelectable="true"
             android:textSize="@dimen/text_title_size"
             android:textStyle="bold" />
 
@@ -45,6 +46,7 @@
             android:layout_toEndOf="@id/image_film_icon"
             android:layout_toRightOf="@id/image_film_icon"
             android:textColor="@color/secondary_text"
+            android:textIsSelectable="true"
             android:textSize="@dimen/text_date_land_size" />
 
     </RelativeLayout>
@@ -61,30 +63,67 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/movie_detail_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/movie_rating_text_size"
+                android:textStyle="bold" />
 
-            <RelativeLayout
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/movie_detail_rating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/round_rectangle_bg_dark"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/movie_rating_text_size"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
+                android:layout_height="0.2dp"
+                android:layout_marginBottom="@dimen/common_icon_spacing"
+                android:layout_marginLeft="@dimen/padding_divider_line"
+                android:layout_marginRight="@dimen/padding_divider_line"
+                android:layout_marginTop="@dimen/common_icon_spacing"
+                android:background="@color/cardview_light_background" />
 
             <TextView
                 android:id="@+id/movie_detail_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
+                android:textIsSelectable="true"
                 android:textSize="@dimen/movie_overview_text_size" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:layout_marginBottom="@dimen/common_icon_spacing"
+                android:layout_marginLeft="@dimen/padding_divider_line"
+                android:layout_marginRight="@dimen/padding_divider_line"
+                android:layout_marginTop="@dimen/common_icon_spacing"
+                android:background="@color/cardview_light_background" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/trailers"
+                android:textColor="@color/colorAccent"
+                android:textIsSelectable="false"
+                android:textSize="@dimen/movie_rating_text_size" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView_trailers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/reviews"
+                android:textColor="@color/colorAccent"
+                android:textIsSelectable="false"
+                android:textSize="@dimen/movie_rating_text_size" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView_reviews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

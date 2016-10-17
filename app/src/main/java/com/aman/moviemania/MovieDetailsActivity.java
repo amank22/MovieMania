@@ -2,6 +2,7 @@ package com.aman.moviemania;
 
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -9,6 +10,7 @@ import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,10 +22,11 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,20 +36,33 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.aman.moviemania.adapter.ReviewsAdapter;
+import com.aman.moviemania.adapter.TrailerAdapter;
 import com.aman.moviemania.helper.Constants;
+import com.aman.moviemania.helper.ItemClickSupport;
+import com.aman.moviemania.helper.RestHelper;
 import com.aman.moviemania.parcel.MovieData;
+import com.aman.moviemania.parcel.ReviewsParcel;
+import com.aman.moviemania.parcel.VideoParcel;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
+import rx.Observer;
+
 public class MovieDetailsActivity extends AppCompatActivity {
 
     public static final String KEY_PARCEL_MOVIE = "movie_parcel_key";
+    private static final String TRAILER_PARCEL_KEY = "trailer_parcel_key";
+    private static final String REVIEWS_PARCEL_KEY = "reviews_parcel_key";
+    private VideoParcel trailerParcel;
+    private ReviewsParcel reviewsParcel;
     private TextView title, date, content;
     private ImageView heroImage;
     private TextView ratings;
+    private RecyclerView trailers, reviews;
 
     private static Bitmap drawableToBitmap(Drawable drawable) {
         Bitmap bitmap;
@@ -84,16 +100,55 @@ public class MovieDetailsActivity extends AppCompatActivity {
                 .setAction("Action", null).show());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         MovieData parcel = getIntent().getParcelableExtra(KEY_PARCEL_MOVIE);
+        initViews();
+        if (parcel != null) {
+            addDatas(parcel);
+            bottomSheetInteractions();
+            if (savedInstanceState == null) {
+                loadVideosData(parcel.getId());
+                loadReviewsData(parcel.getId());
+            } else {
+                trailerParcel = savedInstanceState.getParcelable(TRAILER_PARCEL_KEY);
+                reviewsParcel = savedInstanceState.getParcelable(REVIEWS_PARCEL_KEY);
+                if (trailerParcel != null) {
+                    TrailerAdapter adapter = new TrailerAdapter(MovieDetailsActivity.this, trailerParcel);
+                    trailers.setAdapter(adapter);
+                } else {
+                    trailers.setVisibility(View.GONE);
+                }
+                if (reviewsParcel != null) {
+                    ReviewsAdapter adapter = new ReviewsAdapter(MovieDetailsActivity.this, reviewsParcel);
+                    reviews.setAdapter(adapter);
+                } else {
+                    reviews.setVisibility(View.GONE);
+                }
+            }
+        }
+
+    }
+
+    private void initViews() {
         title = (TextView) findViewById(R.id.movie_detail_title);
         date = (TextView) findViewById(R.id.movie_detail_date);
         content = (TextView) findViewById(R.id.movie_detail_content);
         heroImage = (ImageView) findViewById(R.id.hero_image_movie_detail);
         ratings = (TextView) findViewById(R.id.movie_detail_rating);
-        if (parcel != null) {
-            addDatas(parcel);
-            bottomSheetInteractions();
-        }
+        trailers = (RecyclerView) findViewById(R.id.recyclerView_trailers);
+        trailers.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        reviews = (RecyclerView) findViewById(R.id.recyclerView_reviews);
+        reviews.setLayoutManager(new LinearLayoutManager(this));
+        trailers.setHasFixedSize(true);
+        reviews.setHasFixedSize(true);
+        addClickSupport();
+    }
 
+    private void addClickSupport() {
+        ItemClickSupport.addTo(trailers).setOnItemClickListener(
+                (recyclerView, position, v) -> {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=" +
+                            trailerParcel.getResults().get(position).getKey())));
+                }
+        );
     }
 
     private void bottomSheetInteractions() {
@@ -126,9 +181,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         content.setText(parcel.getOverview());
         String rate = String.format("%s/10", parcel.getVoteAverage());
         Spannable span = new SpannableString(rate);
-        int colorChange = ContextCompat.getColor(MovieDetailsActivity.this, R.color.accent);
         span.setSpan(new RelativeSizeSpan(1.5f), 0, (parcel.getVoteAverage() + "").length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        span.setSpan(new ForegroundColorSpan(colorChange), 0, (parcel.getVoteAverage() + "").length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         ratings.setText(span);
         String url = Constants.getMovieBaseImageUrl(false) + parcel.getPosterPath();
         Glide.with(this).load(url).diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -148,6 +201,62 @@ public class MovieDetailsActivity extends AppCompatActivity {
                 .into(heroImage);
     }
 
+    private void loadVideosData(int id) {
+        RestHelper.getTrailersForMovie(id).subscribe(new Observer<VideoParcel>() {
+            @Override
+            public void onCompleted() {
+                if (trailerParcel != null) {
+                    TrailerAdapter adapter = new TrailerAdapter(MovieDetailsActivity.this, trailerParcel);
+                    trailers.setAdapter(adapter);
+                } else {
+                    trailers.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                trailers.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onNext(VideoParcel videoParcel) {
+                if (videoParcel.getResults().isEmpty()) {
+                    trailers.setVisibility(View.GONE);
+                    return;
+                }
+                trailerParcel = videoParcel;
+            }
+        });
+    }
+
+    private void loadReviewsData(int id) {
+        RestHelper.getReviewsForMovie(id).subscribe(new Observer<ReviewsParcel>() {
+            @Override
+            public void onCompleted() {
+                if (reviewsParcel != null) {
+                    ReviewsAdapter adapter = new ReviewsAdapter(MovieDetailsActivity.this, reviewsParcel);
+                    reviews.setAdapter(adapter);
+                } else {
+                    reviews.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(ReviewsParcel reviewsParcel) {
+                if (reviewsParcel.getResults().length == 0) {
+                    reviews.setVisibility(View.GONE);
+                    return;
+                }
+                MovieDetailsActivity.this.reviewsParcel = reviewsParcel;
+            }
+        });
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -157,6 +266,17 @@ public class MovieDetailsActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (trailerParcel != null) {
+            outState.putParcelable(TRAILER_PARCEL_KEY, trailerParcel);
+        }
+        if (reviewsParcel != null) {
+            outState.putParcelable(REVIEWS_PARCEL_KEY, reviewsParcel);
+        }
     }
 
     private void generateColor(Drawable resource) {
@@ -189,9 +309,11 @@ public class MovieDetailsActivity extends AppCompatActivity {
         if (palette.getVibrantSwatch() != null) {
             int textColor = palette.getVibrantSwatch().getTitleTextColor();
             title.setTextColor(textColor);
+            ratings.setTextColor(textColor);
             date.setTextColor(palette.getVibrantSwatch().getBodyTextColor());
         } else {
             title.setTextColor(Color.WHITE);
+            ratings.setTextColor(Color.WHITE);
             date.setTextColor(Color.LTGRAY);
         }
         return vibrant;

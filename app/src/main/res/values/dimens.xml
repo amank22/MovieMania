@@ -25,6 +25,9 @@
 
     <dimen name="fab_with_progress_size">50dp</dimen>
     <dimen name="progress_around_fab_size">65dp</dimen>
+    <dimen name="trailers_image_height">150dp</dimen>
+    <dimen name="padding_divider_line">50dp</dimen>
+    <dimen name="trailer_website_text">12sp</dimen>
 
 
 </resources>

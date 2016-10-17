@@ -10,4 +10,8 @@
     <string name="hero_movie_image">Hero Movie Image</string>
     <string name="error_no_internet">Please check that you are connected to internet.</string>
     <string name="error_unknown">Some unknown error stuck me. Ghosh! i can\'t think of anything</string>
+    <string name="desc_trailers">Trailers</string>
+    <string name="trailers">Trailers</string>
+    <string name="user_comment">\"%1$s!\"</string>
+    <string name="reviews">Buzzing Around</string>
 </resources>

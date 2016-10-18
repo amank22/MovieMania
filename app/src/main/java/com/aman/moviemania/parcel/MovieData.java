@@ -110,6 +110,15 @@ public class MovieData implements Parcelable {
         this.video = video;
         this.voteAverage = voteAverage;
     }
+    
+    public MovieData(int id, String title, String releaseDate, String overview, float voteAverage, String posterPath) {
+        this.posterPath = posterPath;
+        this.overview = overview;
+        this.releaseDate = releaseDate;
+        this.id = id;
+        this.title = title;
+        this.voteAverage = voteAverage;
+    }
 
     public MovieData(Parcel in) {
         posterPath = in.readString();

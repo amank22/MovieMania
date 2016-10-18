@@ -61,7 +61,7 @@ public class MovieDbHelper extends SQLiteOpenHelper {
                 results.add(data);
             }
         } catch (Exception e){
-            throw e;
+            throw new Exception("Sorry! I tried but can you try again?");
         }finally {
             cursor.close();
         }

@@ -44,25 +44,25 @@ public class RestHelper {
 
     public static Observable<MovieParcel> getPopularMovies() {
         RestService service = RestHelper.createRetrofitService(RestService.class);
-        return service.getPopularMovies(Constants.getMovieApiKey());
+        return service.getPopularMovies(Constants.getMovieApiKey()).retry(3);
     }
 
     public static Observable<MovieParcel> getTopRatedMovies() {
         RestService service = RestHelper.createRetrofitService(RestService.class);
-        return service.getTopRatedMovies(Constants.getMovieApiKey());
+        return service.getTopRatedMovies(Constants.getMovieApiKey()).retry(3);
     }
 
     public static Observable<VideoParcel> getTrailersForMovie(int id) {
         RestService service = RestHelper.createRetrofitService(RestService.class);
         return service.getTrailersForMovie(id, Constants.getMovieApiKey())
                 .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread());
+                .observeOn(AndroidSchedulers.mainThread()).retry(3);
     }
 
     public static Observable<ReviewsParcel> getReviewsForMovie(int id) {
         RestService service = RestHelper.createRetrofitService(RestService.class);
         return service.getReviewsForMovie(id, Constants.getMovieApiKey())
                 .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread());
+                .observeOn(AndroidSchedulers.mainThread()).retry(3);
     }
 }

@@ -28,6 +28,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.RelativeSizeSpan;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -40,9 +41,11 @@ import com.aman.moviemania.adapter.ReviewsAdapter;
 import com.aman.moviemania.adapter.TrailerAdapter;
 import com.aman.moviemania.helper.Constants;
 import com.aman.moviemania.helper.ItemClickSupport;
+import com.aman.moviemania.helper.MovieDbHelper;
 import com.aman.moviemania.helper.RestHelper;
 import com.aman.moviemania.parcel.MovieData;
 import com.aman.moviemania.parcel.ReviewsParcel;
+import com.aman.moviemania.parcel.ReviewsParcelResults;
 import com.aman.moviemania.parcel.VideoParcel;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -63,6 +66,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
     private ImageView heroImage;
     private TextView ratings;
     private RecyclerView trailers, reviews;
+    private MovieData parcel;
 
     private static Bitmap drawableToBitmap(Drawable drawable) {
         Bitmap bitmap;
@@ -96,10 +100,18 @@ public class MovieDetailsActivity extends AppCompatActivity {
             getSupportActionBar().setTitle(null);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(view -> Snackbar.make(view, "Favourite icon.Coming Soon", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show());
+        fab.setOnClickListener(view -> {
+            try {
+                MovieDbHelper.getInstance(MovieDetailsActivity.this).addMovieToFav(parcel);
+                Snackbar.make(view, "Added to favorite", Snackbar.LENGTH_LONG)
+                        .show();
+            } catch (Exception e) {
+                Snackbar.make(view, e.getMessage(), Snackbar.LENGTH_LONG)
+                        .show();
+            }
+        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        MovieData parcel = getIntent().getParcelableExtra(KEY_PARCEL_MOVIE);
+        parcel = getIntent().getParcelableExtra(KEY_PARCEL_MOVIE);
         initViews();
         if (parcel != null) {
             addDatas(parcel);
@@ -117,6 +129,11 @@ public class MovieDetailsActivity extends AppCompatActivity {
                     trailers.setVisibility(View.GONE);
                 }
                 if (reviewsParcel != null) {
+                    for (ReviewsParcelResults data : reviewsParcel.getResults()) {
+                        Log.d("Comment B", data.getContent().length() + "");
+                        data.setContent(data.getContent().substring(0, 200) + "...");
+                        Log.d("Comment A", data.getContent().length() + "");
+                    }
                     ReviewsAdapter adapter = new ReviewsAdapter(MovieDetailsActivity.this, reviewsParcel);
                     reviews.setAdapter(adapter);
                 } else {
@@ -144,10 +161,8 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
     private void addClickSupport() {
         ItemClickSupport.addTo(trailers).setOnItemClickListener(
-                (recyclerView, position, v) -> {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=" +
-                            trailerParcel.getResults().get(position).getKey())));
-                }
+                (recyclerView, position, v) -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=" +
+                        trailerParcel.getResults().get(position).getKey())))
         );
     }
 
@@ -234,6 +249,11 @@ public class MovieDetailsActivity extends AppCompatActivity {
             @Override
             public void onCompleted() {
                 if (reviewsParcel != null) {
+                    for (ReviewsParcelResults data : reviewsParcel.getResults()) {
+                        Log.d("Comment B", data.getContent().length() + "");
+                        data.setContent(data.getContent().substring(0, Math.min(200, data.getContent().length())) + "...");
+                        Log.d("Comment A", data.getContent().length() + "");
+                    }
                     ReviewsAdapter adapter = new ReviewsAdapter(MovieDetailsActivity.this, reviewsParcel);
                     reviews.setAdapter(adapter);
                 } else {

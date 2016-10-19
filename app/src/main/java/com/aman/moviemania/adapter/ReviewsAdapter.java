@@ -2,6 +2,7 @@ package com.aman.moviemania.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,8 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         ReviewsParcelResults mData = parcel.getResults()[position];
         holder.mUser.setText(mData.getAuthor());
-        holder.mComment.setText(String.format(context.getResources().getString(R.string.user_comment), mData.getContent()));
+        holder.mComment.setText(mData.getContent());
+        Log.d("Comment In", mData.getContent().length() + "");
     }
 
     @Override

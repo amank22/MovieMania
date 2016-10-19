@@ -25,6 +25,7 @@ import com.aman.moviemania.adapter.MovieAdapter;
 import com.aman.moviemania.helper.Constants;
 import com.aman.moviemania.helper.GridAutofitLayoutManager;
 import com.aman.moviemania.helper.ItemClickSupport;
+import com.aman.moviemania.helper.MovieDbHelper;
 import com.aman.moviemania.helper.Utils;
 import com.aman.moviemania.parcel.MovieParcel;
 import com.aman.moviemania.service.MovieIntentService;
@@ -100,12 +101,13 @@ public class MoviesActivity extends AppCompatActivity {
         fab.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(R.string.dialog_title_choose_movies);
-            String[] items = {getString(R.string.movie_cat_popular), getString(R.string.movie_cat_top)};
+            String[] items = {getString(R.string.movie_cat_popular), getString(R.string.movie_cat_top), getString(R.string.movie_cat_fav)};
             builder.setItems(items, (dialog, pos) -> {
-                if (!Utils.checkNetworkConnected(MoviesActivity.this)) {
+                if (!Utils.checkNetworkConnected(MoviesActivity.this) && pos != 2) {
                     Toast.makeText(MoviesActivity.this, R.string.error_no_internet, Toast.LENGTH_LONG).show();
                     return;
                 }
+
                 if (pos == 0 && currentType != pos) {
                     MovieIntentService.startActionPopular(this);
                     errorText.setText(R.string.loading_movies);
@@ -116,6 +118,16 @@ public class MoviesActivity extends AppCompatActivity {
                     errorText.setText(R.string.loading_movies);
                     errorText.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.VISIBLE);
+                } else if (pos == 2 && currentType != pos) {
+                    try {
+                        parcel = MovieDbHelper.getInstance(MoviesActivity.this).getFavMovieParcel();
+                        setAdapterToRecycleView(parcel);
+                    } catch (Exception e) {
+                        recyclerView.setVisibility(View.GONE);
+                        errorText.setText(e.getMessage());
+                        errorText.setVisibility(View.VISIBLE);
+                        progressBar.setVisibility(View.INVISIBLE);
+                    }
                 }
                 currentType = pos;
             });

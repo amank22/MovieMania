@@ -29,16 +29,8 @@ public class ReviewsParcelResults implements Parcelable {
         return this.author;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public String getId() {
         return this.id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getContent() {
@@ -51,10 +43,6 @@ public class ReviewsParcelResults implements Parcelable {
 
     public String getUrl() {
         return this.url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 
     @Override

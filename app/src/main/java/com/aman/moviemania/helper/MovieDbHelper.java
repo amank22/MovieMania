@@ -21,6 +21,10 @@ public class MovieDbHelper extends SQLiteOpenHelper {
 
     private static MovieDbHelper sInstance;
 
+    private MovieDbHelper(Context context) {
+        super(context, MovieContract.DATABASE_NAME, null, MovieContract.DATABASE_VERSION);
+    }
+
     public static synchronized MovieDbHelper getInstance(Context context) {
 
         // Use the application context, which will ensure that you
@@ -30,10 +34,6 @@ public class MovieDbHelper extends SQLiteOpenHelper {
             sInstance = new MovieDbHelper(context.getApplicationContext());
         }
         return sInstance;
-    }
-
-    private MovieDbHelper(Context context) {
-        super(context, MovieContract.DATABASE_NAME, null, MovieContract.DATABASE_VERSION);
     }
 
     @Override
@@ -52,20 +52,21 @@ public class MovieDbHelper extends SQLiteOpenHelper {
         Cursor cursor = db.query(MovieContract.MOVIE.TABLE_NAME, null, null, null, null, null, null, null);
         try {
             cursor.moveToFirst();
-            while (cursor.isLast()) {
+            while (!cursor.isAfterLast()) {
                 MovieData data = new MovieData(cursor.getInt(0), cursor.getString(MovieContract.MOVIE.COLUMN_INDEX_TITLE),
                         cursor.getString(MovieContract.MOVIE.COLUMN_INDEX_RELEASE_DATE)
                         , cursor.getString(MovieContract.MOVIE.COLUMN_INDEX_OVERVIEW),
                         cursor.getFloat(MovieContract.MOVIE.COLUMN_INDEX_VOTE_AVERAGE),
                         cursor.getString(MovieContract.MOVIE.COLUMN_INDEX_POSTER_PATH));
                 results.add(data);
+                cursor.moveToNext();
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new Exception("Sorry! I tried but can you try again?");
-        }finally {
+        } finally {
             cursor.close();
         }
-        if (results.isEmpty()){
+        if (results.isEmpty()) {
             throw new Exception("Try click on the heart icon on movie description");
         }
         return new MovieParcel(1, results, results.size(), 1);

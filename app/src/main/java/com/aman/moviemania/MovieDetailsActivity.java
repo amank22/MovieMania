@@ -155,7 +155,8 @@ public class MovieDetailsActivity extends AppCompatActivity {
         reviews = (RecyclerView) findViewById(R.id.recyclerView_reviews);
         reviews.setLayoutManager(new LinearLayoutManager(this));
         trailers.setHasFixedSize(true);
-        reviews.setHasFixedSize(true);
+//        reviews.setHasFixedSize(true);
+        reviews.getLayoutManager().setAutoMeasureEnabled(true);
         addClickSupport();
     }
 

@@ -30,7 +30,7 @@ public final class Constants {
     }
 
     public static String getMovieBaseImageUrl(boolean thumb) {
-        return thumb ? MOVIE_BASE_IMAGE_URL + "w185" : MOVIE_BASE_IMAGE_URL + "w500";
+        return thumb ? MOVIE_BASE_IMAGE_URL + "w185" : MOVIE_BASE_IMAGE_URL + "w780";
     }
 
     public static String getYoutubeThumbLink(String youtube_id) {

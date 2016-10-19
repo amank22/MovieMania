@@ -99,4 +99,25 @@ public class MovieDbHelper extends SQLiteOpenHelper {
             throw new Exception("Unable to remove favorite. Please try again.");
         }
     }
+
+    public List<Integer> getFavMoviesIds() throws Exception {
+        List<Integer> results = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(MovieContract.MOVIE.TABLE_NAME, new String[]{"_id"}, null, null, null, null, null, null);
+        try {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                results.add(cursor.getInt(0));
+                cursor.moveToNext();
+            }
+        } catch (Exception e) {
+            throw new Exception("Sorry! I tried but can you try again?");
+        } finally {
+            cursor.close();
+        }
+        if (results.isEmpty()) {
+            throw new Exception("Try click on the heart icon on movie description");
+        }
+        return results;
+    }
 }

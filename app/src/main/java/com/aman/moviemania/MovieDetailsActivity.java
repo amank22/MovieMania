@@ -58,6 +58,7 @@ import rx.Observer;
 public class MovieDetailsActivity extends AppCompatActivity {
 
     public static final String KEY_PARCEL_MOVIE = "movie_parcel_key";
+    public static final String KEY_IS_FAV = "is_fav_movie";
     private static final String TRAILER_PARCEL_KEY = "trailer_parcel_key";
     private static final String REVIEWS_PARCEL_KEY = "reviews_parcel_key";
     private VideoParcel trailerParcel;
@@ -67,6 +68,8 @@ public class MovieDetailsActivity extends AppCompatActivity {
     private TextView ratings;
     private RecyclerView trailers, reviews;
     private MovieData parcel;
+    private boolean isFav;
+    private FloatingActionButton fab;
 
     private static Bitmap drawableToBitmap(Drawable drawable) {
         Bitmap bitmap;
@@ -98,18 +101,29 @@ public class MovieDetailsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null)
             getSupportActionBar().setTitle(null);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        isFav = getIntent().getBooleanExtra(KEY_IS_FAV, false);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(view -> {
-            try {
-                MovieDbHelper.getInstance(MovieDetailsActivity.this).addMovieToFav(parcel);
-                Snackbar.make(view, "Added to favorite", Snackbar.LENGTH_LONG)
-                        .show();
-            } catch (Exception e) {
-                Snackbar.make(view, e.getMessage(), Snackbar.LENGTH_LONG)
-                        .show();
+            if (!isFav) {
+                try {
+                    MovieDbHelper.getInstance(MovieDetailsActivity.this).addMovieToFav(parcel);
+                    isFav = true;
+                } catch (Exception e) {
+                    Snackbar.make(view, e.getMessage(), Snackbar.LENGTH_LONG)
+                            .show();
+                }
+            } else {
+                try {
+                    MovieDbHelper.getInstance(MovieDetailsActivity.this).removeMovieFromFav(parcel.getId());
+                    isFav = false;
+                } catch (Exception e) {
+                    Snackbar.make(view, e.getMessage(), Snackbar.LENGTH_LONG)
+                            .show();
+                }
             }
+            setFabIcon();
         });
+        setFabIcon();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         parcel = getIntent().getParcelableExtra(KEY_PARCEL_MOVIE);
         initViews();
@@ -142,6 +156,14 @@ public class MovieDetailsActivity extends AppCompatActivity {
             }
         }
 
+    }
+
+    private void setFabIcon() {
+        if (isFav) {
+            fab.setImageResource(R.drawable.ic_thumb_down);
+        } else {
+            fab.setImageResource(R.drawable.ic_thumb_up);
+        }
     }
 
     private void initViews() {

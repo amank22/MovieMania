@@ -36,7 +36,7 @@
         android:layout_marginLeft="@dimen/hero_image_width_land"
         android:layout_marginStart="@dimen/hero_image_width_land"
         android:background="@color/white"
-        android:padding="@dimen/fab_margin">
+        android:padding="@dimen/activity_horizontal_margin">
 
         <ImageView
             android:id="@+id/image_film_icon"
@@ -53,6 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/image_film_icon"
             android:layout_centerHorizontal="true"
+            android:gravity="center"
             android:paddingTop="4dp"
             android:textColor="@color/primary_text"
             android:textIsSelectable="false"
@@ -104,5 +105,5 @@
         app:layout_anchor="@id/bottom_sheet"
         app:layout_anchorGravity="end"
         app:rippleColor="@color/primary"
-        app:srcCompat="@drawable/ic_heart" />
+        app:srcCompat="@drawable/ic_thumb_down" />
 </android.support.design.widget.CoordinatorLayout>

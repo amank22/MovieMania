@@ -9,6 +9,8 @@
     <dimen name="bottom_sheet_peek_height">100dp</dimen>
 
 
+    <dimen name="movies_grid_width">100dp</dimen>
+
     <dimen name="hero_image_width_land">200dp</dimen>
     <dimen name="land_film_hero_icon_size">80dp</dimen>
     <dimen name="film_hero_icon_size">60dp</dimen>
@@ -25,7 +27,6 @@
 
     <dimen name="fab_with_progress_size">50dp</dimen>
     <dimen name="progress_around_fab_size">65dp</dimen>
-    <dimen name="trailers_image_height">150dp</dimen>
     <dimen name="padding_divider_line">50dp</dimen>
     <dimen name="trailer_website_text">12sp</dimen>
 

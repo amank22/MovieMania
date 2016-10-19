@@ -9,7 +9,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -27,8 +29,12 @@ import com.aman.moviemania.helper.GridAutofitLayoutManager;
 import com.aman.moviemania.helper.ItemClickSupport;
 import com.aman.moviemania.helper.MovieDbHelper;
 import com.aman.moviemania.helper.Utils;
+import com.aman.moviemania.parcel.MovieData;
 import com.aman.moviemania.parcel.MovieParcel;
 import com.aman.moviemania.service.MovieIntentService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MoviesActivity extends AppCompatActivity {
@@ -46,7 +52,6 @@ public class MoviesActivity extends AppCompatActivity {
     private MovieParcel parcel;
     private TextView errorText;
     private ProgressBar progressBar;
-
     private final BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -64,6 +69,8 @@ public class MoviesActivity extends AppCompatActivity {
             }
         }
     };
+    private List<Integer> favIds;
+    private boolean isTablet = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +84,8 @@ public class MoviesActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.movie_progress);
         fabOperations();
         int oldPosition = 0;
+        NestedScrollView bottomSheet = (NestedScrollView) findViewById(R.id.bottom_sheet);
+        isTablet = bottomSheet != null;
         if (savedInstanceState != null) {
             currentType = savedInstanceState.getInt(PARCEL_TYPE_KEY);
             parcel = savedInstanceState.getParcelable(PARCEL_KEY);
@@ -154,18 +163,20 @@ public class MoviesActivity extends AppCompatActivity {
         root.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-                    layoutManager = new GridLayoutManager(MoviesActivity.this, 2);
+                if (isTablet) {
+                    int columnWidth = (int) getResources().getDimension(R.dimen.movies_grid_width);
+//                    Log.d("ColumnWidth", columnWidth + "");
+                    layoutManager = new GridAutofitLayoutManager(MoviesActivity.this, columnWidth);
                 } else {
-                    int width = root.getHeight() / 2;
-                    layoutManager = new GridAutofitLayoutManager(MoviesActivity.this, width);
+                    if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                        layoutManager = new GridLayoutManager(MoviesActivity.this, 2);
+                    } else {
+                        layoutManager = new GridLayoutManager(MoviesActivity.this, 3);
+                    }
                 }
-
                 recyclerView.setLayoutManager(layoutManager);
                 if (isOldParcel) {
-                    complete(parcel);
-//                    recyclerView.smoothScrollToPosition(oldPosition);
-                    layoutManager.scrollToPosition(oldPosition);
+                    setAdapterToRecycleView(parcel, oldPosition);
                 }
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)
                     root.getViewTreeObserver().removeGlobalOnLayoutListener(this);
@@ -179,6 +190,19 @@ public class MoviesActivity extends AppCompatActivity {
         movieAdapter = new MovieAdapter(MoviesActivity.this, parcel);
         recyclerView.setAdapter(movieAdapter);
         chooseTitle();
+        recyclerView.setVisibility(View.VISIBLE);
+        errorText.setVisibility(View.GONE);
+        progressBar.setVisibility(View.INVISIBLE);
+    }
+
+    private void setAdapterToRecycleView(MovieParcel oldParcel, int oldPosition) {
+        movieAdapter = new MovieAdapter(MoviesActivity.this, oldParcel);
+        recyclerView.setAdapter(movieAdapter);
+        layoutManager.scrollToPosition(oldPosition);
+        chooseTitle();
+        recyclerView.setVisibility(View.VISIBLE);
+        errorText.setVisibility(View.GONE);
+        progressBar.setVisibility(View.INVISIBLE);
     }
 
     private void chooseTitle() {
@@ -195,9 +219,21 @@ public class MoviesActivity extends AppCompatActivity {
     private void addClickSupport() {
         ItemClickSupport.addTo(recyclerView).setOnItemClickListener(
                 (recyclerView, position, v) -> {
+                    MovieData clickedParcel = movieAdapter.getMovieAtPosition(position);
+                    boolean fav = false;
+                    if (favIds.contains(clickedParcel.getId())) {
+                        fav = true;
+                    }
                     Intent i = new Intent(MoviesActivity.this, MovieDetailsActivity.class);
-                    i.putExtra(MovieDetailsActivity.KEY_PARCEL_MOVIE, movieAdapter.getMovieAtPosition(position));
-                    startActivity(i);
+                    i.putExtra(MovieDetailsActivity.KEY_PARCEL_MOVIE, clickedParcel);
+                    i.putExtra(MovieDetailsActivity.KEY_IS_FAV, fav);
+                    ActivityOptionsCompat options = ActivityOptionsCompat.
+                            makeSceneTransitionAnimation(MoviesActivity.this, v, "poster");
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                        startActivity(i, options.toBundle());
+                    } else {
+                        startActivity(i);
+                    }
                 }
         );
     }
@@ -210,6 +246,11 @@ public class MoviesActivity extends AppCompatActivity {
         intentFilter.addAction(Constants.getMovieBlPopularError());
         intentFilter.addAction(Constants.getMovieBlTopError());
         LocalBroadcastManager.getInstance(MoviesActivity.this).registerReceiver(receiver, intentFilter);
+        try {
+            favIds = MovieDbHelper.getInstance(this).getFavMoviesIds();
+        } catch (Exception e) {
+            favIds = new ArrayList<>();
+        }
     }
 
     @Override
@@ -220,8 +261,6 @@ public class MoviesActivity extends AppCompatActivity {
 
     private void complete(MovieParcel parcel) {
         setAdapterToRecycleView(parcel);
-        errorText.setVisibility(View.GONE);
-        progressBar.setVisibility(View.INVISIBLE);
     }
 
     private void error(String error) {

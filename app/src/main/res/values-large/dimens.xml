@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- For tablets portrait and landscape. -->
+    <dimen name="movies_grid_width">180dp</dimen>
+    <dimen name="bottom_sheet_height">800dp</dimen>
+    <dimen name="text_title_size">32sp</dimen>
+    <dimen name="text_date_size">22sp</dimen>
+    <dimen name="movie_rating_text_size">26sp</dimen>
+    <dimen name="movie_overview_text_size">22sp</dimen>
+</resources>

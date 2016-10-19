@@ -50,5 +50,5 @@
         app:layout_anchor="@id/bottom_sheet"
         app:layout_anchorGravity="end"
         app:rippleColor="@color/primary"
-        app:srcCompat="@drawable/ic_heart" />
+        app:srcCompat="@drawable/ic_thumb_down" />
 </android.support.design.widget.CoordinatorLayout>

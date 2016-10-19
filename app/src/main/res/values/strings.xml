@@ -12,7 +12,6 @@
     <string name="error_unknown">Some unknown error stuck me. Ghosh! i can\'t think of anything</string>
     <string name="desc_trailers">Trailers</string>
     <string name="trailers">Trailers</string>
-    <string name="user_comment">\"%1$s!\"</string>
     <string name="reviews">Buzzing Around</string>
     <string name="movie_cat_fav">Favourite Movies</string>
 </resources>

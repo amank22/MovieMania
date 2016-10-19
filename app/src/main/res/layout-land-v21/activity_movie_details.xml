@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.aman.moviemania.MovieDetailsActivity">
+
+    <ImageView
+        android:id="@+id/hero_image_movie_detail"
+        android:layout_width="@dimen/hero_image_width_land"
+        android:layout_height="match_parent"
+        android:background="@color/primary_text"
+        android:contentDescription="@string/hero_movie_image"
+        android:scaleType="fitXY"
+        android:transitionName="poster" />
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_toolbar_translucent"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:id="@+id/movie_detail_header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/hero_image_width_land"
+        android:layout_marginStart="@dimen/hero_image_width_land"
+        android:background="@color/white"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <ImageView
+            android:id="@+id/image_film_icon"
+            android:layout_width="@dimen/land_film_hero_icon_size"
+            android:layout_height="@dimen/land_film_hero_icon_size"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/common_icon_spacing"
+            android:contentDescription="@string/desc_movie_general_icon"
+            app:srcCompat="@drawable/ic_movie" />
+
+        <TextView
+            android:id="@+id/movie_detail_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image_film_icon"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:paddingTop="4dp"
+            android:textColor="@color/primary_text"
+            android:textIsSelectable="false"
+            android:textSize="@dimen/text_title_land_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/movie_detail_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/movie_detail_title"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/secondary_text"
+            android:textIsSelectable="false"
+            android:textSize="@dimen/text_date_land_size" />
+
+        <TextView
+            android:id="@+id/movie_detail_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/movie_detail_date"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textIsSelectable="false"
+            android:textSize="@dimen/movie_rating_text_size"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/bottom_sheet"
+        layout="@layout/bottom_sheet_movies"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/hero_image_width_land"
+        android:layout_marginStart="@dimen/hero_image_width_land"
+        android:minHeight="@dimen/bottom_sheet_peek_height"
+        app:behavior_peekHeight="@dimen/bottom_sheet_peek_height"
+        app:elevation="5dp"
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        app:backgroundTint="@color/white"
+        app:layout_anchor="@id/bottom_sheet"
+        app:layout_anchorGravity="end"
+        app:rippleColor="@color/primary"
+        app:srcCompat="@drawable/ic_thumb_down" />
+</android.support.design.widget.CoordinatorLayout>
